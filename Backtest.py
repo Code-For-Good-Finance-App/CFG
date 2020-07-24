@@ -2,9 +2,6 @@
 """
 backtest 
 
-For backtesting, we will only focus on stocks that were listed earlier than 
-2016-05-30. Out of the 439 companies from our database, 294 caompnies are considered
-effective for backtest, making up 67% of the total.
 
 trading strategy:
 We will iterate over the time period from 2016-05-30 to 2020-06-19. If any candlestick
@@ -12,9 +9,10 @@ pattern is spotted, we apply the corresponding long/short strategy and profit.
 On any given date, if multiple patterns are spotted, we will diversify the risk 
 by evenly investing the principal to each stock. 
 (1) for Long patterns, buy at the opening price of the day succeeding the pattern,
-and sell when the stock price move upward 1% from our buying price. If the price
-fails to move upward 1% in the considered interval, we sell at the closing price
-of the last day of the considered interval. 
+and sell when the stock price move upward 2% from our buying price. If the price
+moves downward more than 2% in the considered interval, we sell the stock as a way
+to manage the risk. If the price stays in the +/- 2% range relatve to the buying price,
+we sell at the closing price of the last day of the considered interval. 
 (2) for Short patterns, the trading strategy is harder to implement due to the 
 nature of short selling. For the time being, the short patterns are neglected. 
 
